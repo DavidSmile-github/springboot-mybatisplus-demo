@@ -1,14 +1,14 @@
 package com.david.controller;
 
 
+import com.baomidou.mybatisplus.plugins.Page;
 import com.david.entity.User;
 import com.david.service.UserService;
 import com.david.service.UserService2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @author David
@@ -34,5 +34,16 @@ public class UserController {
     @GetMapping("/v2/{id}")
     public User getV2(@PathVariable("id") Long id) {
         return userService2.find(id);
+    }
+
+    @GetMapping()
+    public Page<Map<String, Object>> page(@RequestParam(value = "page", defaultValue = "1") int pageNum,
+                                          @RequestParam(value = "size", defaultValue = "10") int pageSize) {
+        Page<User> page = new Page<>();
+        page.setCurrent(pageNum);
+        page.setSize(pageSize);
+
+        User user = new User();
+        return userService.findByPage(page, user);
     }
 }
