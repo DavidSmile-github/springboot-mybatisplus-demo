@@ -1,6 +1,6 @@
 package com.david.service;
 
-import com.david.dao.UserDao2;
+import com.david.mapper.UserDao2;
 import com.david.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

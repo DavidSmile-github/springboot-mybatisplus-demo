@@ -3,7 +3,7 @@ package com.david.service;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.david.dao.UserDao;
+import com.david.mapper.UserDao;
 import com.david.entity.User;
 import org.springframework.stereotype.Service;
 

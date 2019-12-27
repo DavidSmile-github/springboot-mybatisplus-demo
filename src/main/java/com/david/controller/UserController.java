@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.david.entity.User;
 import com.david.service.UserService;
 import com.david.service.UserService2;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
+@Slf4j
 public class UserController {
 
     @Autowired
@@ -30,6 +32,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public User get(@PathVariable("id") Long id) {
+        log.info("======== get user id:{} ==============", id);
         return userService.find(id);
     }
 
