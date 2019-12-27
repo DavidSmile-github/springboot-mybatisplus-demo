@@ -1,21 +1,12 @@
 package com.david.generator;
 
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
-import com.baomidou.mybatisplus.generator.config.FileOutConfig;
 import com.baomidou.mybatisplus.generator.config.GlobalConfig;
 import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
-import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.DbType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
@@ -42,7 +33,7 @@ public class GeneratorCode {
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
         gc.setAuthor("David");
-        gc.setOutputDir("C:\\workspace\\springboot-mybatisplus-demo\\src\\main\\java");
+        gc.setOutputDir("D:\\workspace\\springboot-mybatisplus-demo\\src\\main\\java");
         gc.setFileOverride(false);// 是否覆盖同名文件，默认是false
         gc.setActiveRecord(true);// 不需要ActiveRecord特性的请改为false
         gc.setEnableCache(false);// XML 二级缓存
@@ -71,15 +62,18 @@ public class GeneratorCode {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("root");
-        dsc.setUrl("jdbc:mysql://localhost:3306/ease-run?useUnicode=true&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://localhost:3306/user?useUnicode=true&characterEncoding=utf8");
         mpg.setDataSource(dsc);
 
         // 策略配置
         StrategyConfig strategy = new StrategyConfig();
         // strategy.setCapitalMode(true);// 全局大写命名 ORACLE 注意
-        strategy.setTablePrefix(new String[]{"user_"});// 此处可以修改为您的表前缀
+        strategy.setTablePrefix(new String[]{""});// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.nochange);// 表名生成策略
-        strategy.setInclude(new String[]{"user"}); // 需要生成的表
+        strategy.setColumnNaming(NamingStrategy.underline_to_camel);
+        strategy.setInclude(new String[]{"student"}); // 需要生成的表
+        strategy.setCapitalMode(true);
+        // strategy.setDbColumnUnderline(true);
         // strategy.setExclude(new String[]{"test"}); // 排除生成的表
         // 自定义实体父类
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
@@ -98,12 +92,13 @@ public class GeneratorCode {
         // strategy.setEntityColumnConstant(true);
         // 【实体】是否为构建者模型（默认 false）
         // public User setName(String name) {this.name = name; return this;}
-        // strategy.setEntityBuilderModel(true);
+        strategy.setEntityBuilderModel(true);
         mpg.setStrategy(strategy);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("com.david");
+        pc.setController("controller");
 //        pc.setModuleName("test");
         mpg.setPackageInfo(pc);
 
