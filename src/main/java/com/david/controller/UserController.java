@@ -7,6 +7,7 @@ import com.david.service.UserService;
 import com.david.service.UserService2;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -29,6 +30,9 @@ public class UserController {
 
     @Autowired
     private UserService2 userService2;
+
+    @Value("${david}")
+    private String david;
 
     @GetMapping("/{id}")
     public User get(@PathVariable("id") Long id) {
