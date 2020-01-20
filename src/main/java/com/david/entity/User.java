@@ -2,6 +2,7 @@ package com.david.entity;
 
 import com.baomidou.mybatisplus.annotations.TableName;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * @author David
@@ -10,14 +11,15 @@ import lombok.Data;
  */
 
 @Data
+@ToString
 @TableName("user")
 public class User {
 
     private Long id;
 
-    private String username;
-
-    private String password;
-
     private String name;
+
+    private String email;
+
+    private String province;
 }

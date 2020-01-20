@@ -44,6 +44,8 @@ public class UserController {
     @GetMapping()
     public Page<Map<String, Object>> page(@RequestParam(value = "page", defaultValue = "1") int pageNum,
                                           @RequestParam(value = "size", defaultValue = "10") int pageSize) {
+
+        log.info("page:" + pageNum + ", pageSize:" + pageSize);
         Page<User> page = new Page<>();
         page.setCurrent(pageNum);
         page.setSize(pageSize);

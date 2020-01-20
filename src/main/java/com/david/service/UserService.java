@@ -23,6 +23,7 @@ public class UserService extends ServiceImpl<UserDao, User> {
 
    public Page<Map<String, Object>> findByPage(Page page, User user) {
        EntityWrapper<User> wrapper = new EntityWrapper<>();
+       wrapper.lt("id", 5);
 
        return this.selectMapsPage(page, wrapper);
    }
